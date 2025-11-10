@@ -8,8 +8,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.pocketroyale.enums.ScreenType
 import com.example.pocketroyale.ui.theme.PocketRoyaleTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +27,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    PocketRoyale_main()
                 }
             }
         }
@@ -30,17 +35,25 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun PocketRoyale_main(){
+    var currentScreen by remember { mutableStateOf(ScreenType.LOGIN) }
+    when(currentScreen){
+        ScreenType.LOGIN -> Temp()
+        ScreenType.HOME -> Temp()
+        ScreenType.SHOP -> Temp()
+        ScreenType.PASS_R -> Temp()
+    }
+}
+
+@Composable
+fun Temp(){
+
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     PocketRoyaleTheme {
-        Greeting("Android")
+        PocketRoyale_main()
     }
 }
