@@ -23,16 +23,16 @@ import androidx.compose.ui.unit.sp
 import com.example.pocketroyale.R
 
 @Composable
-fun NavBarPanel(modifier: Modifier = Modifier) {
+fun CoinsPanel(modifier: Modifier = Modifier){
     Box(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
             .padding(16.dp)
             .background(Color.Black, shape = RoundedCornerShape(8.dp))
-            .padding(horizontal = 8.dp, vertical = 8.dp)
+            .padding(horizontal = 12.dp, vertical = 8.dp)
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.End
+            horizontalArrangement = Arrangement.Start
         ) {
 
             Image(
@@ -40,17 +40,13 @@ fun NavBarPanel(modifier: Modifier = Modifier) {
                 contentDescription = " ",
                 modifier = Modifier.size(24.dp),
             )
-            Image(
-                painter = painterResource(id = R.drawable.placeholder),
-                contentDescription = " ",
-                modifier = Modifier.size(24.dp),
-            )
-            Image(
-                painter = painterResource(id = R.drawable.placeholder),
-                contentDescription = " ",
-                modifier = Modifier.size(24.dp),
-            )
             Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                text = "1000",
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp,
+                color = Color.White
+            )
         }
     }
 }
