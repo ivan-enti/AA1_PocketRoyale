@@ -15,8 +15,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.pocketroyale.enums.ScreenType
-import com.example.pocketroyale.screens.PassFunc
-import com.example.pocketroyale.screens.ShopFunc
 import com.example.pocketroyale.ui.theme.PocketRoyaleTheme
 
 class MainActivity : ComponentActivity() {
@@ -38,12 +36,13 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun PocketRoyale_main(){
-    var currentScreen by remember { mutableStateOf(ScreenType.PASS_R) }
+    var currentScreen by remember { mutableStateOf(ScreenType.LOGIN) }
+    val setScreen: (ScreenType) -> Unit = {screen -> currentScreen = screen}
     when(currentScreen){
         ScreenType.LOGIN -> Temp()
         ScreenType.HOME -> Temp()
-        ScreenType.SHOP -> ShopFunc()
-        ScreenType.PASS_R -> PassFunc()
+        ScreenType.SHOP -> Temp()
+        ScreenType.PASS_R -> Temp()
     }
 }
 
