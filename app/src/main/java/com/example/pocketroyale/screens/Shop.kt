@@ -39,6 +39,7 @@ fun ShopFunc(modifier: Modifier = Modifier){
 }
 
 @Composable
+
 fun ShopTitle() {
     Text(
         text = "Shop",
@@ -50,6 +51,7 @@ fun ShopTitle() {
 }
 
 @Composable
+
 fun ShopGrid() {
 
     val items = List(6) { index -> "Item ${index + 1}" }
@@ -58,13 +60,12 @@ fun ShopGrid() {
         verticalArrangement = Arrangement.spacedBy(12.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // 4 filas
         for (row in 0 until 3) {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // 3 columnas
+
                 for (col in 0 until 3) {
                     val itemIndex = row * 3 + col
                     if (itemIndex < items.size) {
@@ -77,6 +78,7 @@ fun ShopGrid() {
 }
 
 @Composable
+
 fun ShopButton(label: String) {
     Button(
         onClick = { /* Funcionalidad del botón */ },
