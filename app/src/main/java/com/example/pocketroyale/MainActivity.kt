@@ -15,6 +15,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.pocketroyale.enums.ScreenType
+import com.example.pocketroyale.screens.LogInScreen
 import com.example.pocketroyale.ui.theme.PocketRoyaleTheme
 
 class MainActivity : ComponentActivity() {
@@ -38,7 +39,7 @@ class MainActivity : ComponentActivity() {
 fun PocketRoyale_main(){
     var currentScreen by remember { mutableStateOf(ScreenType.LOGIN) }
     when(currentScreen){
-        ScreenType.LOGIN -> Temp()
+        ScreenType.LOGIN -> LogInScreen()
         ScreenType.HOME -> Temp()
         ScreenType.SHOP -> Temp()
         ScreenType.PASS_R -> Temp()
