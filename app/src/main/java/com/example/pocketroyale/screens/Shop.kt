@@ -27,14 +27,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pocketroyale.R
 import com.example.pocketroyale.components.CoinsPanel
+import com.example.pocketroyale.components.NavBarPanel
+import com.example.pocketroyale.enums.ScreenType
 
 @Composable
 
-fun ShopFunc(modifier: Modifier = Modifier){
+fun ShopFunc(setScreen: (ScreenType) -> Unit, modifier: Modifier = Modifier){
     Column(modifier = Modifier) {
         CoinsPanel(modifier = Modifier)
         ShopTitle()
         ShopGrid()
+        NavBarPanel()
     }
 }
 
