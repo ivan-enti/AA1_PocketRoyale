@@ -40,7 +40,7 @@ fun PocketRoyale_main(){
     var currentScreen by remember { mutableStateOf(ScreenType.LOGIN) }
     val setScreen: (ScreenType) -> Unit = {screen -> currentScreen = screen}
     when(currentScreen){
-        ScreenType.LOGIN -> LogInScreen()
+        ScreenType.LOGIN -> LogInScreen(setScreen = setScreen)
         ScreenType.HOME -> Temp()
         ScreenType.SHOP -> Temp()
         ScreenType.PASS_R -> Temp()

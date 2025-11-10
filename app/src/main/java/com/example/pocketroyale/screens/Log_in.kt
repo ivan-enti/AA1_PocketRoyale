@@ -16,11 +16,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.pocketroyale.enums.ScreenType
 
 @Composable
-fun LogInScreen(modifier: Modifier = Modifier){
+fun LogInScreen(setScreen: (ScreenType) -> Unit, modifier: Modifier = Modifier){
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -35,16 +39,32 @@ fun LogInScreen(modifier: Modifier = Modifier){
         Spacer(modifier.height(64.dp))
 
         //Text Fields
+        var username = ""
+        var pass = ""
+        var error_message by remember { mutableStateOf("") }
         Column() {
-            LogIn_TextField(field_name = "username")
+            username = LogIn_TextField(field_name = "username", hide_value = false)
             Spacer(modifier = modifier.height(32.dp))
-            LogIn_TextField(field_name = "password")
+
+            pass = LogIn_TextField(field_name = "password", hide_value = true)
+
+            Text(
+                text = error_message,
+                color = Color.Red
+            )
         }
         Spacer(modifier.height(64.dp))
 
         //Log in Button
         Button(
-            onClick = { /*TODO*/ },
+            onClick = {
+                if(username != "" && pass != "") {
+                    setScreen(ScreenType.HOME)
+                }
+                else{
+                    error_message = "Both fields shouldn't be empty"
+                }
+            },
         ){
             Text(
                 text = "Log in",
@@ -56,7 +76,11 @@ fun LogInScreen(modifier: Modifier = Modifier){
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LogIn_TextField(field_name: String, modifier: Modifier = Modifier){
+fun LogIn_TextField(
+    field_name: String,
+    hide_value: Boolean,
+    modifier: Modifier = Modifier
+): String{
     var value by remember { mutableStateOf("") }
     Text(
         text = field_name,
@@ -64,6 +88,10 @@ fun LogIn_TextField(field_name: String, modifier: Modifier = Modifier){
     )
     TextField(
         value = value,
-        onValueChange = {value = it}
+        onValueChange = {value = it},
+        visualTransformation =
+            if (hide_value) PasswordVisualTransformation()
+            else VisualTransformation.None
     )
+    return value
 }
