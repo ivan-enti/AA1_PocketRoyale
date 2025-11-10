@@ -30,7 +30,7 @@ fun PassFunc(setScreen: (ScreenType) -> Unit, modifier: Modifier = Modifier){
         CoinsPanel(modifier = Modifier)
         PassTitle()
         PassScroll()
-        NavBarPanel()
+        NavBarPanel(setScreen = setScreen)
     }
 }
 
