@@ -15,6 +15,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.pocketroyale.enums.ScreenType
+import com.example.pocketroyale.screens.HomeFunc
 import com.example.pocketroyale.screens.PassFunc
 import com.example.pocketroyale.screens.ShopFunc
 import com.example.pocketroyale.ui.theme.PocketRoyaleTheme
@@ -42,7 +43,7 @@ fun PocketRoyale_main(){
     val setScreen: (ScreenType) -> Unit = {screen -> currentScreen = screen}
     when(currentScreen){
         ScreenType.LOGIN -> Temp()
-        ScreenType.HOME -> Temp()
+        ScreenType.HOME -> HomeFunc(setScreen = setScreen)
         ScreenType.SHOP -> ShopFunc(setScreen = setScreen)
         ScreenType.PASS_R -> PassFunc(setScreen = setScreen)
     }

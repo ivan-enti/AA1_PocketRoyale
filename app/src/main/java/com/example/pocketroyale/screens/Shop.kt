@@ -37,7 +37,7 @@ fun ShopFunc(setScreen: (ScreenType) -> Unit, modifier: Modifier = Modifier){
         CoinsPanel(modifier = Modifier)
         ShopTitle()
         ShopGrid()
-        NavBarPanel()
+        NavBarPanel(setScreen = setScreen)
     }
 }
 
