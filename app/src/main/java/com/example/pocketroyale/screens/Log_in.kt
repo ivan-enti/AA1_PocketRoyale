@@ -40,29 +40,31 @@ fun LogInScreen(setScreen: (ScreenType) -> Unit, modifier: Modifier = Modifier){
 
         //Text Fields
         var username = ""
-        var pass = ""
-        var error_message by remember { mutableStateOf("") }
+        var password = ""
+        var username_error by remember { mutableStateOf("") }
+        var password_error by remember { mutableStateOf("") }
         Column() {
-            username = LogIn_TextField(field_name = "username", hide_value = false)
-            Spacer(modifier = modifier.height(32.dp))
+            username = LogIn_TextField(
+                field_name = "username",
+                hide_value = false,
+                error_message = username_error)
 
-            pass = LogIn_TextField(field_name = "password", hide_value = true)
-
-            Text(
-                text = error_message,
-                color = Color.Red
-            )
+            password = LogIn_TextField(
+                field_name = "password",
+                hide_value = true,
+                error_message = password_error)
         }
+
         Spacer(modifier.height(64.dp))
 
         //Log in Button
         Button(
             onClick = {
-                if(username != "" && pass != "") {
+                username_error = CheckUsername(username)
+                password_error = CheckPassword(password)
+
+                if(username_error == "" && password_error == "") {
                     setScreen(ScreenType.HOME)
-                }
-                else{
-                    error_message = "Both fields shouldn't be empty"
                 }
             },
         ){
@@ -79,13 +81,16 @@ fun LogInScreen(setScreen: (ScreenType) -> Unit, modifier: Modifier = Modifier){
 fun LogIn_TextField(
     field_name: String,
     hide_value: Boolean,
+    error_message: String,
     modifier: Modifier = Modifier
 ): String{
     var value by remember { mutableStateOf("") }
+    //Field name
     Text(
         text = field_name,
         fontSize = 20.sp
     )
+    //Field content
     TextField(
         value = value,
         onValueChange = {value = it},
@@ -93,5 +98,31 @@ fun LogIn_TextField(
             if (hide_value) PasswordVisualTransformation()
             else VisualTransformation.None
     )
+    //Error message
+    Text(
+        text = error_message,
+        color = Color.Red
+    )
+    Spacer(modifier = modifier.height(32.dp))
+
     return value
+}
+
+fun CheckUsername(username: String): String{
+    var error = ""
+    //Check username
+    if(username == "") {
+        error = "Field must be filled"
+    }
+
+    return error
+}
+fun CheckPassword(password: String): String{
+    var error = ""
+    //Check username
+    if(password == "") {
+        error = "Field must be filled"
+    }
+
+    return error
 }
