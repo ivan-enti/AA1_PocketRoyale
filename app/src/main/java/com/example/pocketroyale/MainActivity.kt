@@ -37,6 +37,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun PocketRoyale_main(){
     var currentScreen by remember { mutableStateOf(ScreenType.LOGIN) }
+    val setScreen: (ScreenType) -> Unit = {screen -> currentScreen = screen}
     when(currentScreen){
         ScreenType.LOGIN -> Temp()
         ScreenType.HOME -> Temp()
