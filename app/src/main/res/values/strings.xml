@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PocketRoyale</string>
+    <string name="default_username">username</string>
+    <string name="default_legue_name">legue_name</string>
 </resources>
