@@ -47,21 +47,21 @@ fun NavBarPanel(
                 contentDescription = " ",
                 modifier = Modifier
                     .size(48.dp)
-                    .clickable {setScreen(ScreenType.HOME)}
+                    .clickable { setScreen(ScreenType.HOME) }
             )
             Image(
                 painter = painterResource(id = R.drawable.placeholder),
                 contentDescription = " ",
                 modifier = Modifier
                     .size(48.dp)
-                    .clickable {setScreen(ScreenType.SHOP)}
+                    .clickable { setScreen(ScreenType.SHOP) }
             )
             Image(
                 painter = painterResource(id = R.drawable.placeholder),
                 contentDescription = " ",
                 modifier = Modifier
                     .size(48.dp)
-                    .clickable {setScreen(ScreenType.PASS_R)}
+                    .clickable { setScreen(ScreenType.PASS_R) }
             )
             Spacer(modifier = Modifier.width(8.dp))
         }
