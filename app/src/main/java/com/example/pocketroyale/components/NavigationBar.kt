@@ -37,28 +37,30 @@ fun NavBarPanel(
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.End
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            modifier = Modifier
+                .fillMaxWidth()
         ) {
 
             Image(
                 painter = painterResource(id = R.drawable.placeholder),
                 contentDescription = " ",
                 modifier = Modifier
-                    .size(24.dp)
+                    .size(48.dp)
                     .clickable {setScreen(ScreenType.HOME)}
             )
             Image(
                 painter = painterResource(id = R.drawable.placeholder),
                 contentDescription = " ",
                 modifier = Modifier
-                    .size(24.dp)
+                    .size(48.dp)
                     .clickable {setScreen(ScreenType.SHOP)}
             )
             Image(
                 painter = painterResource(id = R.drawable.placeholder),
                 contentDescription = " ",
                 modifier = Modifier
-                    .size(24.dp)
+                    .size(48.dp)
                     .clickable {setScreen(ScreenType.PASS_R)}
             )
             Spacer(modifier = Modifier.width(8.dp))
