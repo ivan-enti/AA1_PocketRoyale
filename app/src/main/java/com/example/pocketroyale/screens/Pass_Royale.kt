@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -30,6 +31,7 @@ fun PassFunc(setScreen: (ScreenType) -> Unit, modifier: Modifier = Modifier){
         CoinsPanel(modifier = Modifier)
         PassTitle()
         PassScroll()
+        Spacer(modifier = modifier.weight(1f))
         NavBarPanel(setScreen = setScreen)
     }
 }
