@@ -29,7 +29,7 @@ fun NavBarPanel(
     setScreen: (ScreenType) -> Unit,
     modifier: Modifier = Modifier) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(16.dp)
             .background(Color.Black, shape = RoundedCornerShape(8.dp))
