@@ -32,7 +32,7 @@ fun NavBarPanel(
         modifier = modifier
             .fillMaxWidth()
             .padding(16.dp)
-            .background(Color.Black, shape = RoundedCornerShape(8.dp))
+            .background(Color(0xFF2C2C2C), shape = RoundedCornerShape(8.dp))
             .padding(horizontal = 8.dp, vertical = 8.dp)
     ) {
         Row(
@@ -43,27 +43,29 @@ fun NavBarPanel(
         ) {
 
             Image(
-                painter = painterResource(id = R.drawable.placeholder),
+                painter = painterResource(id = R.drawable.profile),
                 contentDescription = " ",
                 modifier = Modifier
                     .size(48.dp)
                     .clickable { setScreen(ScreenType.HOME) }
             )
+            Spacer(modifier = Modifier.width(16.dp))
             Image(
-                painter = painterResource(id = R.drawable.placeholder),
+                painter = painterResource(id = R.drawable.shop),
                 contentDescription = " ",
                 modifier = Modifier
                     .size(48.dp)
                     .clickable { setScreen(ScreenType.SHOP) }
             )
+            Spacer(modifier = Modifier.width(16.dp))
             Image(
-                painter = painterResource(id = R.drawable.placeholder),
+                painter = painterResource(id = R.drawable.pass),
                 contentDescription = " ",
                 modifier = Modifier
                     .size(48.dp)
                     .clickable { setScreen(ScreenType.PASS_R) }
             )
-            Spacer(modifier = Modifier.width(8.dp))
+
         }
     }
 }
