@@ -32,18 +32,47 @@ import com.example.pocketroyale.components.BackgroundShader
 import com.example.pocketroyale.components.CoinsPanel
 import com.example.pocketroyale.components.NavBarPanel
 import com.example.pocketroyale.enums.ScreenType
+import com.example.pocketroyale.ui.theme.Typography
+import com.example.pocketroyale.ui.theme.royaleFont
+import androidx.compose.material3.ButtonDefaults
+
+
+data class ShopItem(
+    val name: String,
+    val rarity: String,
+    val imageRes: Int,
+    val price: Int
+)
 
 @Composable
 
 fun ShopFunc(setScreen: (ScreenType) -> Unit, modifier: Modifier = Modifier){
-    Box(modifier = modifier.fillMaxSize().background(BackgroundShader())) {
-        Column(modifier = Modifier) {
+
+    val shopItems = listOf(
+        ShopItem("Gems", "Common", R.drawable.gems, 0),
+        ShopItem("Goblin", "Common", R.drawable.goblin, 200),
+        ShopItem("Inferno Tower", "Rare", R.drawable.inferno, 500),
+        ShopItem("Prince", "Epic", R.drawable.prince, 1000),
+        ShopItem("Skeleton Army", "Epic", R.drawable.skarmy, 1000),
+        ShopItem("Electro Wizard", "Legendary", R.drawable.electrowiz, 2000),
+    )
+
+    Box(modifier = modifier
+        .fillMaxSize()
+        .background(BackgroundShader()),
+        //contentAlignment = Alignment.TopCenter
+    ) {
+        Column(modifier = Modifier.fillMaxSize()) {
             CoinsPanel(modifier = Modifier)
             ShopTitle()
-            ShopGrid()
-            Spacer(modifier = modifier.weight(1f))
-            NavBarPanel(setScreen = setScreen)
+            ShopGrid(items = shopItems)
+            //Spacer(modifier = modifier.weight(1f))
+            //NavBarPanel(setScreen = setScreen)
         }
+        NavBarPanel(
+            setScreen = setScreen,
+            modifier = Modifier.align(Alignment.BottomCenter)
+        )
     }
 }
 
@@ -52,23 +81,24 @@ fun ShopFunc(setScreen: (ScreenType) -> Unit, modifier: Modifier = Modifier){
 fun ShopTitle() {
     Text(
         text = "Shop",
-        fontSize = 40.sp,
-        fontWeight = FontWeight.ExtraBold,
-        color = Color.Black,
-        modifier = Modifier.padding(vertical = 8.dp)
+        style = Typography.titleLarge
     )
 }
 
 @Composable
 
-fun ShopGrid() {
+fun ShopGrid(items: List<ShopItem>) {
 
-    val items = List(6) { index -> "Item ${index + 1}" }
+    //val items = List(6) { index -> "Item ${index + 1}" }
 
     Column(
-        verticalArrangement = Arrangement.spacedBy(12.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.fillMaxWidth()
     ) {
+
+        val columns = 3
+        val rows = (items.size + columns - 1) / columns
         for (row in 0 until 3) {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
@@ -79,6 +109,8 @@ fun ShopGrid() {
                     val itemIndex = row * 3 + col
                     if (itemIndex < items.size) {
                         ShopButton(items[itemIndex])
+                    } else {
+                        Spacer(modifier = Modifier.size(width = 120.dp, height = 160.dp))
                     }
                 }
             }
@@ -88,18 +120,47 @@ fun ShopGrid() {
 
 @Composable
 
-fun ShopButton(label: String) {
+fun ShopButton(item: ShopItem) {
     Button(
         onClick = { /* Funcionalidad del botón */ },
         shape = RoundedCornerShape(10.dp),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color(0xFFD6ECFF),
+            contentColor = Color(0xFF0A2540)
+        ),
         modifier = Modifier
-            .size(width = 100.dp, height = 100.dp)
+            .size(width = 125.dp, height = 250.dp)
     ) {
-        Text(
-            text = label,
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color.White
-        )
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier.padding(4.dp)
+        ) {
+            Text(
+                text = item.name,
+                //fontSize = 18.sp,
+                style = Typography.bodyLarge
+                //fontWeight = FontWeight.Bold,
+                //color = Color.White
+            )
+            Text(
+                text = item.rarity,
+                style = Typography.bodyLarge
+                //fontSize = 14.sp,
+                //color = Color.White
+            )
+            Image(
+                painter = painterResource(id = item.imageRes),
+                contentDescription = "Carta",
+                modifier = Modifier.size(100.dp)
+            )
+            Text(
+                text = "${item.price} Coins",
+                //fontSize = 20.sp,
+                style = Typography.bodyLarge
+                //fontWeight = FontWeight.Medium,
+                //color = Color.Yellow
+            )
+        }
     }
 }
