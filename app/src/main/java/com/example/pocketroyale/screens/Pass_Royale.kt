@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -20,6 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.pocketroyale.components.BackgroundShader
 import com.example.pocketroyale.components.CoinsPanel
 import com.example.pocketroyale.components.NavBarPanel
 import com.example.pocketroyale.enums.ScreenType
@@ -27,12 +29,14 @@ import com.example.pocketroyale.enums.ScreenType
 @Composable
 
 fun PassFunc(setScreen: (ScreenType) -> Unit, modifier: Modifier = Modifier){
-    Column(modifier = Modifier) {
-        CoinsPanel(modifier = Modifier)
-        PassTitle()
-        PassScroll()
-        Spacer(modifier = modifier.weight(1f))
-        NavBarPanel(setScreen = setScreen)
+    Box(modifier = modifier.fillMaxSize().background(BackgroundShader())) {
+        Column(modifier = Modifier) {
+            CoinsPanel(modifier = Modifier)
+            PassTitle()
+            PassScroll()
+            Spacer(modifier = modifier.weight(1f))
+            NavBarPanel(setScreen = setScreen)
+        }
     }
 }
 

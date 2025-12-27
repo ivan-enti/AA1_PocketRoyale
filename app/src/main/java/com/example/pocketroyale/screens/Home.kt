@@ -29,6 +29,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pocketroyale.R
+import com.example.pocketroyale.components.BackgroundShader
 import com.example.pocketroyale.components.CoinsPanel
 import com.example.pocketroyale.components.NavBarPanel
 import com.example.pocketroyale.enums.ScreenType
@@ -38,7 +39,9 @@ import com.example.pocketroyale.enums.ScreenType
 fun HomeFunc(setScreen: (ScreenType) -> Unit, modifier: Modifier = Modifier){
     Box(modifier = modifier.fillMaxSize()) {
         Column(
-            modifier = modifier.fillMaxSize(),
+            modifier = modifier
+                .fillMaxSize()
+                .background(BackgroundShader()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             UserProfile(

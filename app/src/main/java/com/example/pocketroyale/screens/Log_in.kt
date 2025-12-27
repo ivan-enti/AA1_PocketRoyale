@@ -1,6 +1,8 @@
 package com.example.pocketroyale.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,55 +25,60 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pocketroyale.enums.ScreenType
 import com.example.pocketroyale.ui.theme.Typography
+import com.example.pocketroyale.components.BackgroundShader
 import com.example.pocketroyale.ui.theme.royaleFont
 
 @Composable
 fun LogInScreen(setScreen: (ScreenType) -> Unit, modifier: Modifier = Modifier){
-    Column(
-        modifier = modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        //Title
-        Text(
-            text = "Pocket\nRoyale",
-            style = Typography.titleLarge
-        )
-        Spacer(modifier.height(64.dp))
-
-        //Text Fields
-        var username = ""
-        var password = ""
-        var username_error by remember { mutableStateOf("") }
-        var password_error by remember { mutableStateOf("") }
-        Column() {
-            username = LogIn_TextField(
-                field_name = "username",
-                hide_value = false,
-                error_message = username_error)
-
-            password = LogIn_TextField(
-                field_name = "password",
-                hide_value = true,
-                error_message = password_error)
-        }
-
-        Spacer(modifier.height(64.dp))
-
-        //Log in Button
-        Button(
-            onClick = {
-                username_error = CheckUsername(username)
-                password_error = CheckPassword(password)
-
-                if(username_error == "" && password_error == "") {
-                    setScreen(ScreenType.HOME)
-                }
-            },
-        ){
+    Box(modifier = modifier.fillMaxSize().background(BackgroundShader())) {
+        Column(
+            modifier = modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            //Title
             Text(
-                text = "Log in"
+                text = "Pocket\nRoyale",
+                style = Typography.titleLarge
             )
+            Spacer(modifier.height(64.dp))
+
+            //Text Fields
+            var username = ""
+            var password = ""
+            var username_error by remember { mutableStateOf("") }
+            var password_error by remember { mutableStateOf("") }
+            Column() {
+                username = LogIn_TextField(
+                    field_name = "username",
+                    hide_value = false,
+                    error_message = username_error
+                )
+
+                password = LogIn_TextField(
+                    field_name = "password",
+                    hide_value = true,
+                    error_message = password_error
+                )
+            }
+
+            Spacer(modifier.height(64.dp))
+
+            //Log in Button
+            Button(
+                onClick = {
+                    username_error = CheckUsername(username)
+                    password_error = CheckPassword(password)
+
+                    if (username_error == "" && password_error == "") {
+                        setScreen(ScreenType.HOME)
+                    }
+                },
+            ) {
+                Text(
+                    text = "Log in"
+                )
+            }
         }
     }
 }
