@@ -22,6 +22,8 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pocketroyale.enums.ScreenType
+import com.example.pocketroyale.ui.theme.Typography
+import com.example.pocketroyale.ui.theme.royaleFont
 
 @Composable
 fun LogInScreen(setScreen: (ScreenType) -> Unit, modifier: Modifier = Modifier){
@@ -33,8 +35,7 @@ fun LogInScreen(setScreen: (ScreenType) -> Unit, modifier: Modifier = Modifier){
         //Title
         Text(
             text = "Pocket\nRoyale",
-            fontSize = 48.sp,
-            lineHeight = 64.sp
+            style = Typography.titleLarge
         )
         Spacer(modifier.height(64.dp))
 
@@ -69,8 +70,7 @@ fun LogInScreen(setScreen: (ScreenType) -> Unit, modifier: Modifier = Modifier){
             },
         ){
             Text(
-                text = "Log in",
-                fontSize = 24.sp
+                text = "Log in"
             )
         }
     }
