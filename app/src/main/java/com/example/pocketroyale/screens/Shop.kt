@@ -58,15 +58,19 @@ fun ShopFunc(setScreen: (ScreenType) -> Unit, modifier: Modifier = Modifier){
     Box(modifier = modifier
         .fillMaxSize()
         .background(BackgroundShader()),
-        contentAlignment = Alignment.TopCenter
+        //contentAlignment = Alignment.TopCenter
     ) {
-        Column(modifier = Modifier) {
+        Column(modifier = Modifier.fillMaxSize()) {
             CoinsPanel(modifier = Modifier)
             ShopTitle()
             ShopGrid(items = shopItems)
-            Spacer(modifier = modifier.weight(1f))
-            NavBarPanel(setScreen = setScreen)
+            //Spacer(modifier = modifier.weight(1f))
+            //NavBarPanel(setScreen = setScreen)
         }
+        NavBarPanel(
+            setScreen = setScreen,
+            modifier = Modifier.align(Alignment.BottomCenter)
+        )
     }
 }
 
@@ -74,7 +78,7 @@ fun ShopFunc(setScreen: (ScreenType) -> Unit, modifier: Modifier = Modifier){
 
 fun ShopTitle() {
     Text(
-        text = "SHOP",
+        text = "Shop",
         style = Typography.titleLarge
     )
 }
