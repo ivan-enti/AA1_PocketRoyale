@@ -6,4 +6,6 @@
     <string name="trophies_title">Trophies</string>
     <string name="legue_title">Legue</string>
     <string name="title_best">BEST</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
 </resources>
