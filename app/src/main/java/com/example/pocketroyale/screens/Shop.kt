@@ -3,6 +3,7 @@ package com.example.pocketroyale.screens
 //import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -81,7 +82,8 @@ fun ShopFunc(setScreen: (ScreenType) -> Unit, modifier: Modifier = Modifier){
 fun ShopTitle() {
     Text(
         text = "Shop",
-        style = Typography.titleLarge
+        style = Typography.titleLarge,
+        modifier = Modifier.fillMaxWidth().padding(16.dp)
     )
 }
 
@@ -125,9 +127,10 @@ fun ShopButton(item: ShopItem) {
         onClick = { /* Funcionalidad del botón */ },
         shape = RoundedCornerShape(10.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0xFFD6ECFF),
+            containerColor = Color(0xFFA8BBD8),
             contentColor = Color(0xFF0A2540)
         ),
+        border = BorderStroke(5.dp, Color(0xFF9BAAC0)),
         modifier = Modifier
             .size(width = 125.dp, height = 250.dp)
     ) {
@@ -138,16 +141,11 @@ fun ShopButton(item: ShopItem) {
         ) {
             Text(
                 text = item.name,
-                //fontSize = 18.sp,
-                style = Typography.bodySmall
-                //fontWeight = FontWeight.Bold,
-                //color = Color.White
+                style = Typography.titleMedium
             )
             Text(
                 text = item.rarity,
-                style = Typography.bodySmall
-                //fontSize = 14.sp,
-                //color = Color.White
+                style = Typography.titleMedium
             )
             Image(
                 painter = painterResource(id = item.imageRes),
@@ -156,10 +154,7 @@ fun ShopButton(item: ShopItem) {
             )
             Text(
                 text = "${item.price} Coins",
-                //fontSize = 20.sp,
-                style = Typography.bodySmall
-                //fontWeight = FontWeight.Medium,
-                //color = Color.Yellow
+                style = Typography.titleMedium
             )
         }
     }

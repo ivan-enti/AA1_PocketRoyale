@@ -41,7 +41,7 @@ fun PassFunc(setScreen: (ScreenType) -> Unit, modifier: Modifier = Modifier){
     Box(modifier = modifier
         .fillMaxSize()
         .background(BackgroundShader())) {
-        Column(modifier = Modifier) {
+        Column(modifier = Modifier.fillMaxSize()) {
             CoinsPanel(modifier = Modifier)
             PassTitle()
             PassScroll()

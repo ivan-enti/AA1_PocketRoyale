@@ -63,6 +63,15 @@ val Typography = Typography(
         color = Color.White,
         textAlign = TextAlign.Center
     ),
+    titleMedium = TextStyle(
+        fontFamily = royaleFont,
+        fontWeight = FontWeight.ExtraBold,
+        fontSize = 12.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.sp,
+        color = Color.White,
+        textAlign = TextAlign.Center
+    ),
     titleSmall = TextStyle(
         fontFamily = royaleFont,
         fontWeight = FontWeight.ExtraBold,
