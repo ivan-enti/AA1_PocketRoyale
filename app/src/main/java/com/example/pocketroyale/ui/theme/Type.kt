@@ -17,10 +17,42 @@ val Typography = Typography(
     bodyLarge = TextStyle(
         fontFamily = royaleFont,
         fontWeight = FontWeight.Normal,
+        fontSize = 32.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp,
+        color = Color.White
+    ),
+    bodyMedium = TextStyle(
+        fontFamily = royaleFont,
+        fontWeight = FontWeight.Normal,
+        fontSize = 24.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp,
+        color = Color.White
+    ),
+    bodySmall = TextStyle(
+        fontFamily = royaleFont,
+        fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp,
         color = Color.White
+    ),
+    displayMedium = TextStyle(
+        fontFamily = royaleFont,
+        fontWeight = FontWeight.Normal,
+        fontSize = 20.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp,
+        color = Color.Black
+    ),
+    displaySmall = TextStyle(
+        fontFamily = royaleFont,
+        fontWeight = FontWeight.Normal,
+        fontSize = 20.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp,
+        color = Color.Red
     ),
     titleLarge = TextStyle(
         fontFamily = royaleFont,

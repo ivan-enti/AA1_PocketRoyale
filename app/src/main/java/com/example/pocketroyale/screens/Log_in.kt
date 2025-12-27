@@ -106,7 +106,7 @@ fun LogInScreen(setScreen: (ScreenType) -> Unit, modifier: Modifier = Modifier){
             ) {
                 Text(
                     text = "Log in",
-                    style = Typography.bodyLarge,
+                    style = Typography.bodyMedium,
                     modifier = modifier.padding(16.dp)
 
                 )
@@ -127,7 +127,7 @@ fun LogIn_TextField(
     //Field name
     Text(
         text = field_name,
-        fontSize = 20.sp,
+        style = Typography.bodyMedium,
         modifier = modifier.padding(8.dp)
     )
     //Field content
@@ -137,12 +137,13 @@ fun LogIn_TextField(
         visualTransformation =
             if (hide_value) PasswordVisualTransformation()
             else VisualTransformation.None,
-        modifier = modifier.clip(RoundedCornerShape(16.dp))
+        modifier = modifier.clip(RoundedCornerShape(16.dp)),
+        textStyle = Typography.displayMedium,
     )
     //Error message
     Text(
         text = error_message,
-        color = Color.Red
+        style = Typography.displaySmall
     )
     Spacer(modifier = modifier.height(32.dp))
 
