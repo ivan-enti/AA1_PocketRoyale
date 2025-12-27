@@ -34,6 +34,8 @@ import com.example.pocketroyale.components.NavBarPanel
 import com.example.pocketroyale.enums.ScreenType
 import com.example.pocketroyale.ui.theme.Typography
 import com.example.pocketroyale.ui.theme.royaleFont
+import androidx.compose.material3.ButtonDefaults
+
 
 data class ShopItem(
     val name: String,
@@ -122,6 +124,10 @@ fun ShopButton(item: ShopItem) {
     Button(
         onClick = { /* Funcionalidad del botón */ },
         shape = RoundedCornerShape(10.dp),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color(0xFFD6ECFF),
+            contentColor = Color(0xFF0A2540)
+        ),
         modifier = Modifier
             .size(width = 125.dp, height = 250.dp)
     ) {

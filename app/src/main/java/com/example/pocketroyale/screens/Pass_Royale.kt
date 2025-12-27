@@ -66,14 +66,27 @@ fun PassTitle() {
 fun PassScroll() {
 
     val rewards = listOf(
+        Reward("1", R.drawable.goldcage),
         Reward("1", R.drawable.gems),
-        Reward("1", R.drawable.gems),
-        Reward("2", R.drawable.gems),
-        Reward("2", R.drawable.gems),
+        Reward("2", R.drawable.comodin),
+        Reward("2", R.drawable.chest),
         Reward("3", R.drawable.gems),
-        Reward("3", R.drawable.gems),
+        Reward("3", R.drawable.comodin),
+        Reward("4", R.drawable.goldcage),
         Reward("4", R.drawable.gems),
-        Reward("4", R.drawable.gems),
+        Reward("5", R.drawable.chest),
+        Reward("5", R.drawable.comodin),
+        Reward("6", R.drawable.goldcage),
+        Reward("6", R.drawable.gems),
+        Reward("7", R.drawable.chest),
+        Reward("7", R.drawable.chest),
+        Reward("8", R.drawable.gems),
+        Reward("8", R.drawable.comodin),
+        Reward("9", R.drawable.goldcage),
+        Reward("9", R.drawable.chest),
+        Reward("10", R.drawable.gems),
+        Reward("10", R.drawable.gems),
+
     )
     LazyColumn(
         modifier = Modifier

@@ -36,7 +36,7 @@ fun CoinsPanel(modifier: Modifier = Modifier){
         ) {
 
             Image(
-                painter = painterResource(id = R.drawable.placeholder),
+                painter = painterResource(id = R.drawable.gold),
                 contentDescription = " ",
                 modifier = Modifier.size(24.dp),
             )
