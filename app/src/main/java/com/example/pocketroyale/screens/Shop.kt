@@ -139,13 +139,13 @@ fun ShopButton(item: ShopItem) {
             Text(
                 text = item.name,
                 //fontSize = 18.sp,
-                style = Typography.bodyLarge
+                style = Typography.bodySmall
                 //fontWeight = FontWeight.Bold,
                 //color = Color.White
             )
             Text(
                 text = item.rarity,
-                style = Typography.bodyLarge
+                style = Typography.bodySmall
                 //fontSize = 14.sp,
                 //color = Color.White
             )
@@ -157,7 +157,7 @@ fun ShopButton(item: ShopItem) {
             Text(
                 text = "${item.price} Coins",
                 //fontSize = 20.sp,
-                style = Typography.bodyLarge
+                style = Typography.bodySmall
                 //fontWeight = FontWeight.Medium,
                 //color = Color.Yellow
             )

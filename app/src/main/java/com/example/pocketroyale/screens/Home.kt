@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -48,7 +49,7 @@ fun HomeFunc(setScreen: (ScreenType) -> Unit, modifier: Modifier = Modifier){
         ) {
             //Profile
             UserProfile(
-                R.drawable.default_profile,
+                R.drawable.profile,
                 stringResource(R.string.default_username),
                 stringResource(R.string.default_legue_name)
             )
@@ -69,17 +70,22 @@ fun UserProfile(
     clan_name: String,
     modifier: Modifier = Modifier
 ){
-    Box(modifier = modifier.padding(24.dp).fillMaxWidth().height(180.dp)) {
+    Box(modifier = modifier
+        .padding(24.dp)
+        .fillMaxWidth()
+        .height(160.dp)) {
         Image(
             painter = painterResource(id = R.drawable.panel),
             contentDescription = null,
             contentScale = ContentScale.FillBounds,
             modifier = modifier
+                .fillMaxSize()
                 .align(Alignment.Center)
-                .fillMaxSize(),
         )
         Row(
-            modifier = modifier.fillMaxWidth(),
+            modifier = modifier
+                .fillMaxWidth()
+                .align(Alignment.Center),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -87,19 +93,16 @@ fun UserProfile(
                 painter = painterResource(id = img),
                 contentDescription = null,
                 modifier = modifier
-                    .size(128.dp)
-                    .padding(16.dp)
+                    .size(116.dp)
+                    .padding(8.dp)
                     .clip(CircleShape),
             )
             Column(
-                modifier = modifier.padding(16.dp),
+                modifier = modifier.padding(8.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(text = username, style = Typography.bodyMedium)
                 Row(
-                    modifier
-                        .clip(RoundedCornerShape(16.dp))
-                        .background(Color(0xFFAEAEAE)),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Image(
@@ -120,18 +123,25 @@ fun UserProfile(
 
 @Composable
 fun SectionTitle(title: String, modifier: Modifier = Modifier){
-    Column(
+    Box(
         modifier = modifier
             .fillMaxWidth()
-            .background(Color(0xFFD9D9D9)),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+            .height(48.dp),
     ) {
+        Image(
+            painter = painterResource(id = R.drawable.section_panel),
+            contentDescription = null,
+            contentScale = ContentScale.FillBounds,
+            modifier = modifier
+                .align(Alignment.Center)
+                .fillMaxSize()
+                .padding(16.dp, 0.dp)
+        )
         Text(
             text = title,
-            fontSize = 24.sp,
-            modifier = modifier.padding(8.dp),
-            fontWeight = FontWeight.Bold
+            modifier = modifier
+                .padding(8.dp)
+                .align(Alignment.Center),
         )
     }
 }
@@ -147,29 +157,38 @@ fun SectionTrophieLegue(section_name: String, trophies: Int, legue_name: String,
 
 @Composable
 fun <T> InfoBox(img: Int, name: String, value: T, modifier: Modifier = Modifier){
-    Row(
-        modifier = modifier
-            .padding(16.dp)
-            .clip(RoundedCornerShape(16.dp))
-            .background(Color(0xFFD9D9D9)),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center
-    ){
+    Box(modifier = modifier
+        .padding(16.dp)
+        .width(64.dp)
+        .height(96.dp)
+    ) {
         Image(
-            painter = painterResource(id = img),
+            painter = painterResource(id = R.drawable.panel),
             contentDescription = null,
-            modifier = Modifier
-                .size(96.dp)
-                .weight(1f)
-                .padding(8.dp)
+            contentScale = ContentScale.FillBounds,
+            modifier = modifier.fillMaxSize()
         )
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = modifier.weight(1f)
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center,
+            modifier = modifier.fillMaxSize()
         ) {
-            Text(text = name, fontSize = 16.sp)
-            Text(text = value.toString(), fontSize = 24.sp, textAlign = TextAlign.Center)
+            Image(
+                painter = painterResource(id = img),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(80.dp)
+                    .weight(1f)
+                    .padding(8.dp)
+            )
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = modifier.weight(1f)
+            ) {
+                Text(text = name, style = Typography.titleSmall)
+                Text(text = value.toString(), style = Typography.bodySmall, textAlign = TextAlign.Center)
+            }
         }
     }
 }
@@ -177,22 +196,30 @@ fun <T> InfoBox(img: Int, name: String, value: T, modifier: Modifier = Modifier)
 @Composable
 fun SectionBadges(badges: Array<Array<Int>>, modifier: Modifier = Modifier){
     SectionTitle(title = "BADGES")
-    Column(
-        modifier = modifier
-            .padding(16.dp)
-            .clip(RoundedCornerShape(16.dp))
-            .background(Color(0xFFD9D9D9))
+    Box(modifier = modifier
+        .padding(16.dp)
+        .width(288.dp)
+        .height(128.dp)
     ) {
-        for (badge_row in badges){
-            Row(){
-                for(badge in badge_row){
-                    Image(
-                        painter = painterResource(id = badge), 
-                        contentDescription = null,
-                        modifier = modifier
-                            .size(64.dp)
-                            .padding(16.dp)
-                    )
+        Image(
+            painter = painterResource(id = R.drawable.panel),
+            contentDescription = null,
+            contentScale = ContentScale.FillBounds,
+            modifier = modifier
+                .fillMaxSize()
+        )
+        Column(modifier = modifier.align(Alignment.Center)) {
+            for (badge_row in badges) {
+                Row() {
+                    for (badge in badge_row) {
+                        Image(
+                            painter = painterResource(id = badge),
+                            contentDescription = null,
+                            modifier = modifier
+                                .size(64.dp)
+                                .padding(16.dp)
+                        )
+                    }
                 }
             }
         }
